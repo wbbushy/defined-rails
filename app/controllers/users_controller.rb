@@ -8,4 +8,12 @@ class UsersController < ApplicationController
     @user.save
     session[:id] = @user.id
   end
+
+
+  private
+  ## Strong Parameters
+  def user_params
+    params.require(:user).permit(:user_name, :email, :password)
+  end
+
 end
