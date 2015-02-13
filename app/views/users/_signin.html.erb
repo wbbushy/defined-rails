@@ -1,9 +1,7 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, :type => 'email' %>
-</div>
-
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
+<%=form_tag sessions_path do%>
+  <%=label_tag :user_name %>
+  <%=text_field_tag :user_name %>
+  <%=label_tag :password %>
+  <%=password_field_tag :password %>
+  <%=submit_tag "Log in" %>
+<%end%>
