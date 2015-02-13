@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user.password=(params["password"])
     @user.save
     session[:id] = @user.id
+    redirect_to main_path
   end
 
 
