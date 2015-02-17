@@ -3,6 +3,8 @@
 <%= render "users/logout" %>
 
 <% if session[:id] %>
-  <%= session[:id] %>
+  <%= render "words/enter" %>
+  <%= render "words/display", :words => @words %>
 <% end %>
+
 
