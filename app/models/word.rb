@@ -1,7 +1,7 @@
 class Word < ActiveRecord::Base
 
-  validates :spelling, uniqueness: true
 
-  belongs_to :users
+  has_many :users_word
+  has_many :users, :through => :users_word
 
 end
