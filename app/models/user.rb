@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
-  has_many :words
+  has_many :users_word
+  has_many :words, :through => :users_word
 
   include BCrypt
 
