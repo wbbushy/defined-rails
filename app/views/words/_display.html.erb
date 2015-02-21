@@ -1,7 +1,11 @@
-<% @words.each do |x| %>
-  <%= p x.spelling %>
-  <%= p x.definition %>
-  <br>
+<% if @words == nil %>
+  <%=  "ADD A WORD!" %>
+<% else %>
+  <% @words.each do |x| %>
+    <%= p x.word.spelling %>
+    <%= p x.word.definition %>
+    <br>
+  <% end %>
 <% end %>
 
 
