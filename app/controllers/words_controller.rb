@@ -14,14 +14,30 @@ class WordsController < ApplicationController
     @definitionOne = @definitionOne.gsub(/<[^>]*>/,"")
   end
 
+  def create_association(word)
+    @user = User.find_by_id(session[:id])
+    @user.words << word
+  end
 
   def create
-    @word = Word.new(spelling: params["spelling"])
-    @word.user_id = session[:id]
-    define(@word)
-    @word.definition = @definitionOne
-    @word.save
-    redirect_to main_path
+    @word = Word.find_by spelling: params["spelling"]
+    if @word == nil
+      @word = Word.new(spelling: params["spelling"])
+      define(@word)
+      @word.definition = @definitionOne
+      @word.save
+      create_association(@word)
+    else
+      @association = UsersWord.where(:user_id => session[:id], :word_id => @word.id)
+      if @association == []
+        print @association
+        create_association(@word)
+      else
+        print "You already entered that word!"
+
+      end
+    end
+      redirect_to main_path
   end
 
 
