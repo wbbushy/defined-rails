@@ -1,5 +1,5 @@
 <% if @words == nil %>
-  <%=  "ADD A WORD!" %>
+  <%=  p "ADD A WORD!" %>
 <% else %>
   <% @words.each do |x| %>
     <%= p x.word.spelling %>
