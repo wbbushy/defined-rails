@@ -1,3 +1,4 @@
+<% if session[:id] == nil %>
   <%= form_tag users_path do %>
     <span class="sign_up_label">user name:</span>
     <%= text_field_tag :user_name , nil , :placeholder => "e.g. papajons"%>
@@ -7,3 +8,4 @@
     <%= email_field_tag :email , nil , :placeholder => "e.g. sample@example.com"%>
     <%= submit_tag "Sign up" %>
   <% end %>
+<% end %>
