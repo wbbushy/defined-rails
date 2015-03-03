@@ -5,6 +5,7 @@
   <% @words.each do |x| %>
     <%= p x.word.spelling %>
     <%= p x.word.definition %>
+    <%= link_to "Delete", word_path(x.word.id) , method: "delete"%>
     <br>
   <% end %>
 <% end %>

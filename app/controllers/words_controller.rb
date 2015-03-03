@@ -40,6 +40,13 @@ class WordsController < ApplicationController
       redirect_to main_path
   end
 
+  def destroy
+    @user = User.find_by_id(session[:id])
+    @word = Word.find_by_id(params[:id])
+    @user.words.delete(@word)
+    redirect_to main_path
+  end
+
 
   private
   ## Strong Parameters
