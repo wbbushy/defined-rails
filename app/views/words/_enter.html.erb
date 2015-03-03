@@ -1,5 +1,9 @@
-<%= form_tag("/words", method: "post") do %>
-  <p>Title</p>
-  <%= text_field_tag :spelling , nil, :class => 'input_box'%>
-  <%= submit_tag "Find Word"%>
+<% if session[:id] %>
+
+  <%= form_tag("/words", method: "post") do %>
+    <p>Title</p>
+    <%= text_field_tag :spelling , nil, :class => 'input_box'%>
+    <%= submit_tag "Find Word"%>
+  <% end %>
+
 <% end %>
