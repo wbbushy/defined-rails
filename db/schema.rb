@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150217002853) do
 
   create_table "words", force: true do |t|
     t.string   "spelling"
-    t.string   "definition"
+    t.text     "definition"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
