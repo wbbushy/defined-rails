@@ -9,9 +9,13 @@ class WordsController < ApplicationController
     @xml_doc = Nokogiri::XML(open(@url))
     @definitions = @xml_doc.xpath("//dt")
     @definitionOne = @definitions[0].to_s[4..-6]
+    if @definitionOne == nil
+      return false
+    else
     @definitionOne = @definitionOne.gsub(/(?i)<vi[^>]*>/, "\"")
     @definitionOne = @definitionOne.gsub(/(?i)<\/vi[^>]*>/, "\"")
     @definitionOne = @definitionOne.gsub(/<[^>]*>/,"")
+    end
   end
 
   def create_association(word)
@@ -23,10 +27,15 @@ class WordsController < ApplicationController
     @word = Word.find_by spelling: params["spelling"]
     if @word == nil
       @word = Word.new(spelling: params["spelling"])
-      define(@word)
+      if define(@word) == false
+        flash[:alert] = "Word Could Not be found"
+        redirect_to main_path
+        return false
+      else
       @word.definition = @definitionOne
       @word.save
       create_association(@word)
+      end
     else
       @association = UsersWord.where(:user_id => session[:id], :word_id => @word.id)
       if @association == []
