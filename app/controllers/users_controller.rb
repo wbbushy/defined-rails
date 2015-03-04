@@ -5,9 +5,13 @@ class UsersController < ApplicationController
                      email: params["email"]
                      )
     @user.password=(params["password"])
-    @user.save
-    session[:id] = @user.id
-    redirect_to main_path
+    if @user.save
+      session[:id] = @user.id
+      redirect_to main_path
+    else
+      flash[:alert] = "Username already exists!"
+      redirect_to main_path
+    end
   end
 
 
