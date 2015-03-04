@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  validates_uniqueness_of :user_name
+
   has_many :users_word
   has_many :words, :through => :users_word
 
