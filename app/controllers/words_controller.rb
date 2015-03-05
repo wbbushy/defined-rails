@@ -8,7 +8,7 @@ class WordsController < ApplicationController
     @url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + word.spelling.to_s + "?key=" + ENV["API_KEY"]
     @xml_doc = Nokogiri::XML(open(@url))
     @definitions = @xml_doc.xpath("//dt")
-    @definitionOne = @definitions[0].to_s[4..-6]
+    @definitionOne = @definitions[0].to_s[5..-6]
     if @definitionOne == nil
       return false
     else
@@ -28,8 +28,8 @@ class WordsController < ApplicationController
     if @word == nil
       @word = Word.new(spelling: params["spelling"])
       if define(@word) == false
-        flash[:alert] = "Word Could Not be found"
-        redirect_to main_path
+        flash[:wordalert] = "Word Could Not be found"
+        redirect_to dashboard_path
         return false
       else
       @word.definition = @definitionOne
@@ -46,14 +46,14 @@ class WordsController < ApplicationController
 
       end
     end
-      redirect_to main_path
+      redirect_to dashboard_path
   end
 
   def destroy
     @user = User.find_by_id(session[:id])
     @word = Word.find_by_id(params[:id])
     @user.words.delete(@word)
-    redirect_to main_path
+    redirect_to dashboard_path
   end
 
 
