@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
 
   get '/main', to: 'pages#main', as: 'main'
+  get '/dashboard', to: 'pages#dashboard', as: 'dashboard'
   delete "logout" => "sessions#destroy"
 
 
