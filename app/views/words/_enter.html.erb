@@ -1,9 +1,9 @@
-<% if session[:id] %>
-
-  <%= form_tag("/words", method: "post") do %>
-    <p>Title</p>
-    <%= text_field_tag :spelling , nil, :class => 'input_box'%>
-    <%= submit_tag "Find Word"%>
-  <% end %>
-
+<%= form_tag("/words", method: "post") do %>
+  <div class="col-md-4">
+    <%= text_field_tag :spelling , nil, :class => 'form-control'%>
+  </div>
+  <div class="col-md-2">
+    <%= submit_tag "Find Word", :class => "btn btn-default"%>
+  </div>
 <% end %>
+
