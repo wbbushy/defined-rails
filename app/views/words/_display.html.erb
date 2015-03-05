@@ -3,14 +3,16 @@
   <%=  p "ADD A WORD!" %>
 <% else %>
   <% @words.each do |x| %>
-    <%= p x.word.spelling %>
-    <%= p x.word.definition %>
-    <%= link_to "Delete", word_path(x.word.id) , method: "delete"%>
+    <div class="entry">
+      <span class="spelling"><%= p x.word.spelling + ":" %></span>
+      <span class="definition"><%= p x.word.definition %></span>
+      <span class="delete"><%= link_to "Remove", word_path(x.word.id) , method: "delete"%></span>
+    </div>
     <br>
   <% end %>
 <% end %>
 
-<% if flash[:alert] %>
-  <%= flash[:alert] %>
+<% if flash[:wordalert] %>
+  <%= flash[:wordalert] %>
 <% end %>
 
