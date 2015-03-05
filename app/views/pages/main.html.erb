@@ -1,11 +1,20 @@
-<%= render "users/signup" %>
-<%= render "users/signin" %>
-<%= render "users/logout" %>
-<%= render "users/welcome" %>
-
-<% if session[:id] %>
-  <%= render "words/enter" %>
-  <%= render "words/display", :words => @words %>
-<% end %>
-
+<div class="container" id="title-page">
+  <div class="row">
+    <div id="title">
+      <h1>Defined</h1>
+      <h2>For All Your Word Defintion Needs<h2>
+    </div>
+  </div>
+  <div class ="row login">
+    <div class="col-md-5" id="signin">
+      <%= render "users/signin" %>
+    </div>
+  </div>
+  <div class ="row login">
+    <div class="col-md-5" id="signup">
+      <%= render "users/signup" %>
+    </div>
+  </div>
+</div>
+<!-- /end #title-page-->
 
