@@ -1,0 +1,21 @@
+<div id="header">
+   <div class="container">
+    <div class="row" id='logout'>
+      <%= render "users/logout" %>
+    </div>
+  </div>
+</div>
+<div class="container" id="content">
+  <div class="row" id='welcome'>
+    <%= render "users/welcome" %>
+  </div>
+  <div class="row" id='enter-word'>
+    <%= render "words/enter" %>
+  </div>
+  <div class="row" id='saved-words'>
+    <%= render "words/savedwords" %>
+  </div>
+  <div class="row" id='display'>
+    <%= render "words/display", :words => @words %>
+  </div>
+</div>
