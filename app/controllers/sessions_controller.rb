@@ -5,13 +5,13 @@ class SessionsController < ApplicationController
     if @user
       if @user.password == params[:password]
           session[:id] = @user.id
-          redirect_to main_path
+          redirect_to dashboard_path
       else
-          flash[:alert] = "Username or password is incorrect"
+          flash[:useralert] = "Username or password is incorrect"
           redirect_to main_path
       end
     else
-      flash[:alert] = "Username or password is incorrect"
+      flash[:useralert] = "Username or password is incorrect"
       redirect_to main_path
     end
   end
