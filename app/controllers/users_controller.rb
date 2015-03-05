@@ -7,9 +7,9 @@ class UsersController < ApplicationController
     @user.password=(params["password"])
     if @user.save
       session[:id] = @user.id
-      redirect_to main_path
+      redirect_to dashboard_path
     else
-      flash[:alert] = "Username already exists!"
+      flash[:useralert] = "Username already exists!"
       redirect_to main_path
     end
   end
