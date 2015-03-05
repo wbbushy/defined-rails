@@ -1,7 +1,4 @@
-<% if session[:id] != nil %>
-  <%= "welcome  " +  @current_user.user_name %>
-<% end %>
+<h3><%= "welcome  " +  @current_user.user_name %></h3>
 
-<% if flash[:alert] %>
-  <%= flash[:alert] %>
-<% end %>
+
+
