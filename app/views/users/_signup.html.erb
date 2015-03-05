@@ -1,11 +1,32 @@
 <% if session[:id] == nil %>
-  <%= form_tag users_path do %>
-    <span class="sign_up_label">user name:</span>
-    <%= text_field_tag :user_name , nil , :placeholder => "e.g. papajons"%>
-    <span class="sign_up_label">password:</span>
-    <%= password_field_tag :password , nil , :placeholder => "password"%>
-    <span class="sign_up_label">email:</span>
-    <%= email_field_tag :email , nil , :placeholder => "e.g. sample@example.com"%>
-    <%= submit_tag "Sign up" %>
+  <%= form_tag users_path, :class => "form-horizontal" do %>
+    <h3>Create and Account</h3>
+
+    <div class="form-group">
+      <%= text_field_tag :user_name , nil , :placeholder => "username", :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= password_field_tag :password , nil , :placeholder => "password", :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+        <%= email_field_tag :email , nil , :placeholder => "email", :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+    </div>
+
+    <div class="form-group">
+      <%= submit_tag "Sign up", :class => "btn btn-primary btn-lg btn-block" %>
+    </div>
   <% end %>
+  <br>
+  <p id="already-member">Already a Member? Sign In</p>
+
+<% end %>
+
+<% if flash[:useralert] %>
+  <%= flash[:useralert] %>
 <% end %>
