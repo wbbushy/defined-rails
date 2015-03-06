@@ -3,8 +3,6 @@ class WordsController < ApplicationController
   require 'open-uri'
   require 'nokogiri'
 
-  include ActionView::Helpers::SanitizeHelper
-
 
   def define(word)
     @url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + word.spelling.to_s + "?key=" + ENV["API_KEY"]
