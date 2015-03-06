@@ -8,10 +8,14 @@ class WordsController < ApplicationController
     @url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + word.spelling.to_s + "?key=" + ENV["API_KEY"]
     @xml_doc = Nokogiri::XML(open(@url))
     @definitions = @xml_doc.xpath("//dt")
-    @definitionOne = @definitions[0].to_s[5..-6]
+    @definitionOne = @definitions[0].to_s[4..-6]
     if @definitionOne == nil
       return false
     else
+      @firstCharacter = @definitionOne.split('')[0]
+      if @firstCharacter == ":"
+        @definitionOne = @definitionOne[1..-1]
+      end
       return @definitionOne
     end
   end
