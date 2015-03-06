@@ -3,6 +3,8 @@ class WordsController < ApplicationController
   require 'open-uri'
   require 'nokogiri'
 
+  include ActionView::Helpers::SanitizeHelper
+
 
   def define(word)
     @url = "http://www.dictionaryapi.com/api/v1/references/collegiate/xml/" + word.spelling.to_s + "?key=" + ENV["API_KEY"]
@@ -12,9 +14,7 @@ class WordsController < ApplicationController
     if @definitionOne == nil
       return false
     else
-    @definitionOne = @definitionOne.gsub(/(?i)<vi[^>]*>/, "\"")
-    @definitionOne = @definitionOne.gsub(/(?i)<\/vi[^>]*>/, "\"")
-    @definitionOne = @definitionOne.gsub(/<[^>]*>/,"")
+      return @definitionOne
     end
   end
 
@@ -55,7 +55,6 @@ class WordsController < ApplicationController
     @user.words.delete(@word)
     redirect_to dashboard_path
   end
-
 
   private
   ## Strong Parameters
