@@ -4,6 +4,9 @@ class PagesController < ApplicationController
     @user = User.new
     @words = UsersWord.where(user_id: session[:id])
     @current_user ||= User.find(session[:id]) if session[:id]
+    if session[:id]
+      redirect_to dashboard_path
+    end
   end
 
   def dashboard
