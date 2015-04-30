@@ -18,7 +18,8 @@
 }
 
 .container {
-  width: 940px;
+  width: 90%;
+  min-width: 600px;
 }
 
 .container h4 {
